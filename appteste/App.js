@@ -1,14 +1,12 @@
 import React, { Component } from 'react';
-import { View, StyleSheet, Text} from 'react-native';
-
-import {Slider} from '@react-native-community/slider';
+import { View, StyleSheet,Text,Switch} from 'react-native';
 
 export default class App extends Component {
 
   constructor(props){
     super(props);
     this.state = {
-      valor:0
+     status:false
     };
   };
 
@@ -17,13 +15,14 @@ export default class App extends Component {
   
   return (
     <View style={styles.container}>
-      <Slider 
-      style={{width: 200, height: 40}}
-      minimumValue={0}
-      maximumValue={1}
-      minimumTrackTintColor="#FFFFFF"
-      maximumTrackTintColor="#000000"
+      <Switch
+      value={this.state.status}
+      onValueChange={ (valorSwitch) => this.setState({status: valorSwitch})}
+      thumbColor="#FF00FF"
       />
+      <Text>
+        {(this.state.status) ? "Ativo" : "Inativo"}
+      </Text>
     </View>
    );
  }
